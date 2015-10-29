@@ -106,6 +106,7 @@
             this.cameraBox.Location = new System.Drawing.Point(3, 28);
             this.cameraBox.Name = "cameraBox";
             this.cameraBox.Size = new System.Drawing.Size(778, 334);
+            this.cameraBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.cameraBox.TabIndex = 2;
             this.cameraBox.TabStop = false;
             // 

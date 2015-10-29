@@ -35,8 +35,9 @@ namespace Aplikacja
         public MainForm()
         {
             InitializeComponent();
-            //IntPtr image = CvInvoke.cvCreateImage(new System.Drawing.Size(400, 300), Emgu.CV.CvEnum.IplDepth.IplDepth_8U, 1);
-            //Image<Bgr, Byte> image = new Image<Bgr, byte>(100,100);
+            _capture = new Capture("http://192.168.1.3:8080/?x.mjpg");
+            _capture.Start();
+            _capture.ImageGrabbed += imageGrabbed;
         }
 
         #endregion
@@ -49,6 +50,13 @@ namespace Aplikacja
             {
                 form.ShowDialog();
             }
+        }
+
+        private void imageGrabbed(object sender, EventArgs arg)
+        {
+            Mat frame = new Mat();
+            _capture.Retrieve(frame, 0);
+            cameraBox.Image = frame;
         }
 
         #endregion
